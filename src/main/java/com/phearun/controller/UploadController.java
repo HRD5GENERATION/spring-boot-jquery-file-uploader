@@ -1,14 +1,14 @@
 package com.phearun.controller;
 
-import com.phearun.service.FileUploadService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import com.phearun.service.FileUploadService;
 
 @RestController
 public class UploadController {
@@ -22,7 +22,8 @@ public class UploadController {
 
 	@PostMapping("/uploads")
 	public List<String> upload(@RequestParam List<MultipartFile> files){
-
+		files.forEach(System.out::println);
+		
 		List<String> fileUrls = fileUploadService.upload(files);
 		fileUrls.forEach(System.out::println);
 

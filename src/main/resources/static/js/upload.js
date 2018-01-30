@@ -2,12 +2,27 @@ $(document).ready(function() {
 
     // enable fileuploader plugin
     var input = $('input[name="files"]').fileuploader({
+    	extensions: ['jpg', 'jpeg', 'png'],
         enableApi: true,
-        addMore: true
+        addMore: true,
+        files: [{
+		        	name: 'jai.png',
+					size: 67287,
+					type: 'image/png',
+					file: 'http://localhost:9999/images/jai.png'
+			  	},
+			  	{
+					name: '1517286423846.jpg',
+					size: 6720,
+					type: 'image/jpg',
+					file: 'http://localhost:9999/resources/assets/1517286423846.jpg'
+			  	}],
     });
+    
     // get API methods
     window.api = $.fileuploader.getInstance(input);
-
+    
+    console.log('API Document: https://innostudio.de/fileuploader/documentation/');
     console.log('var api = $.fileuploader.getInstance(input);');
     console.info('Here are the API methods:', api);
     console.info('Type in the console for example: api.disable()');
